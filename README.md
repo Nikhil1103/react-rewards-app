@@ -26,7 +26,7 @@ A $120 purchase = (2 × $20) + (1 × $50) = **90 points**
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/react-rewards-app.git
+git clone https://github.com/Nikhil1103/react-rewards-app.git
 cd react-rewards-app
 
 ### Install Dependencies 
