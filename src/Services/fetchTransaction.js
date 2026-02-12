@@ -1,9 +1,18 @@
 import { transactions } from "../Data/transaction";
+import { MESSAGES } from "../constants";
 
 export const fetchTransactions = () => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(transactions);
+            // Simulate API call with error handling capability
+            try {
+                if (!transactions || !Array.isArray(transactions)) {
+                    throw new Error('Invalid transaction data received');
+                }
+                resolve(transactions);
+            } catch (error) {
+                reject(new Error(MESSAGES.API_ERROR));
+            }
         }, 1000); // Simulate a delay of 1 second
     });
-}       
+};       
