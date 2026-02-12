@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 import MonthCard from './MonthCard.jsx';
 import TransactionTable from './TransactionTable.jsx';
 
@@ -24,7 +25,7 @@ const CustomerRewards = memo(function CustomerRewards({ customer }) {
               monthData={customer.months[month]}
             />
           ))}
-          
+
           {/* Total Points Card */}
           <div className='bg-green-50 rounded-lg p-4 border-2 border-green-200'>
             <p className='text-gray-600 text-sm font-semibold mb-1'>Total Points</p>
@@ -38,5 +39,29 @@ const CustomerRewards = memo(function CustomerRewards({ customer }) {
     </div>
   );
 });
+
+CustomerRewards.propTypes = {
+  customer: PropTypes.shape({
+    customerId: PropTypes.string.isRequired,
+    customerName: PropTypes.string.isRequired,
+    months: PropTypes.objectOf(
+      PropTypes.shape({
+        month: PropTypes.string.isRequired,
+        points: PropTypes.number.isRequired,
+        transactions: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            customerId: PropTypes.string.isRequired,
+            customerName: PropTypes.string.isRequired,
+            amount: PropTypes.number.isRequired,
+            date: PropTypes.string.isRequired,
+            points: PropTypes.number.isRequired,
+          })
+        ).isRequired,
+      })
+    ).isRequired,
+    total: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default CustomerRewards;

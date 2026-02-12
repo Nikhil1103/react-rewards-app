@@ -1,6 +1,26 @@
-import { memo } from 'react';
+import { memo, useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 const TransactionTable = memo(function TransactionTable({ customer, months }) {
+    // Memoize transactions list
+    const allTransactions = useMemo(() => {
+        return months.flatMap(month =>
+            customer.months[month].transactions.map(transaction => ({
+                ...transaction,
+                month,
+            }))
+        );
+    }, [customer, months]);
+
+    // Memoize date formatter
+    const formatDate = useCallback((dateString) => {
+        try {
+            return new Date(dateString).toLocaleDateString();
+        } catch (e) {
+            return dateString;
+        }
+    }, []);
+
     return (
         <div className='border-t pt-6'>
             <h3 className='text-lg font-semibold text-gray-800 mb-4'>Transaction Details</h3>
@@ -14,26 +34,49 @@ const TransactionTable = memo(function TransactionTable({ customer, months }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {months.map((month) =>
-                            customer.months[month].transactions.map((transaction) => (
-                                <tr key={transaction.id} className='border-b hover:bg-gray-50 transition'>
-                                    <td className='px-4 py-2 text-gray-700'>
-                                        {new Date(transaction.date).toLocaleDateString()}
-                                    </td>
-                                    <td className='px-4 py-2 text-gray-700 font-medium'>
-                                        ${transaction.amount.toFixed(2)}
-                                    </td>
-                                    <td className='px-4 py-2 font-semibold text-blue-600'>
-                                        {transaction.points}
-                                    </td>
-                                </tr>
-                            ))
-                        )}
+                        {allTransactions.map((transaction) => (
+                            <tr key={transaction.id} className='border-b hover:bg-gray-50 transition'>
+                                <td className='px-4 py-2 text-gray-700'>
+                                    {formatDate(transaction.date)}
+                                </td>
+                                <td className='px-4 py-2 text-gray-700 font-medium'>
+                                    ${transaction.amount.toFixed(2)}
+                                </td>
+                                <td className='px-4 py-2 font-semibold text-blue-600'>
+                                    {transaction.points}
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
         </div>
     );
 });
+
+TransactionTable.propTypes = {
+    customer: PropTypes.shape({
+        customerId: PropTypes.string.isRequired,
+        customerName: PropTypes.string.isRequired,
+        months: PropTypes.objectOf(
+            PropTypes.shape({
+                month: PropTypes.string.isRequired,
+                points: PropTypes.number.isRequired,
+                transactions: PropTypes.arrayOf(
+                    PropTypes.shape({
+                        id: PropTypes.number.isRequired,
+                        customerId: PropTypes.string.isRequired,
+                        customerName: PropTypes.string.isRequired,
+                        amount: PropTypes.number.isRequired,
+                        date: PropTypes.string.isRequired,
+                        points: PropTypes.number.isRequired,
+                    })
+                ).isRequired,
+            })
+        ).isRequired,
+        total: PropTypes.number.isRequired,
+    }).isRequired,
+    months: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default TransactionTable;
