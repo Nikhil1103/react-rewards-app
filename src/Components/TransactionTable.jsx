@@ -3,14 +3,6 @@ import PropTypes from 'prop-types';
 
 const TransactionTable = memo(function TransactionTable({ customer, months }) {
     // Memoize transactions list
-    // const allTransactions = useMemo(() => {
-    //     return months.flatMap(month =>
-    //         customer.months[month].transactions.map(transaction => ({
-    //             ...transaction,
-    //             month,
-    //         }))
-    //     );
-    // }, [customer, months]);
     const allTransactions = useMemo(() => {
         return months.flatMap(month => {
             const monthData = customer.months[month];
@@ -36,13 +28,13 @@ const TransactionTable = memo(function TransactionTable({ customer, months }) {
         <div className='border-t pt-6'>
             <h3 className='text-lg font-semibold text-gray-800 mb-4'>Transaction Details</h3>
             <div className='overflow-x-auto'>
-                <table className='w-full text-sm'>
+                <table className='w-full text-sm m-20'>
                     <thead className='bg-gray-100'>
                         <tr>
-                            <th className='px-4 py-2 text-left text-gray-600 font-semibold'>Transaction ID</th>
-                            <th className='px-4 py-2 text-left text-gray-600 font-semibold'>Date</th>
-                            <th className='px-4 py-2 text-left text-gray-600 font-semibold'>Amount</th>
-                            <th className='px-4 py-2 text-left text-gray-600 font-semibold'>Points</th>
+                            <th className='px-4 py-2 text-center text-gray-600 font-semibold'>Transaction ID</th>
+                            <th className='px-4 py-2 text-center text-gray-600 font-semibold'>Date</th>
+                            <th className='px-4 py-2 text-center text-gray-600 font-semibold'>Amount</th>
+                            <th className='px-4 py-2 text-center text-gray-600 font-semibold'>Points</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +67,6 @@ TransactionTable.propTypes = {
         customerName: PropTypes.string.isRequired,
         months: PropTypes.objectOf(
             PropTypes.shape({
-                // month: PropTypes.string.isRequired,
                 points: PropTypes.number.isRequired,
                 transactions: PropTypes.arrayOf(
                     PropTypes.shape({

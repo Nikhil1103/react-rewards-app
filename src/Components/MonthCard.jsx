@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import { DATE_FORMAT } from '../constants';
 
 const MonthCard = memo(function MonthCard({ month, monthData }) {
-    // Memoize date string to avoid recreation
-    // const monthDisplay = useMemo(() => {
-    //     return new Date(month + '-01').toLocaleDateString(
-    //         DATE_FORMAT.LOCALE,
-    //         DATE_FORMAT.OPTIONS
-    //     );
-    // }, [month]);
+    // Memoize date string to avoid recreation on every render
     const monthDisplay = useMemo(() => {
         try {
             return new Date(month + '-01').toLocaleDateString(
@@ -40,7 +34,6 @@ const MonthCard = memo(function MonthCard({ month, monthData }) {
 MonthCard.propTypes = {
     month: PropTypes.string.isRequired,
     monthData: PropTypes.shape({
-        // month: PropTypes.string.isRequired,
         points: PropTypes.number.isRequired,
         transactions: PropTypes.arrayOf(
             PropTypes.shape({

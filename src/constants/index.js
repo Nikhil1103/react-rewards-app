@@ -25,7 +25,7 @@ export const CUSTOMERS = [
 // Pagination config
 export const PAGINATION_CONFIG = {
     PAGE_SIZE: 6,
-    CUSTOMERS_PER_PAGE: 6,
+    CUSTOMERSPERPAGE: 6,
 };
 
 // App messages

@@ -28,7 +28,6 @@ export default function App() {
 
     loadData();
   }, []);
-  console.log('Rewards Data:', rewardsData);
 
   if (loading) {
     return (
@@ -44,11 +43,11 @@ export default function App() {
   if (error) {
     return (
       <div className='flex items-center justify-center min-h-screen bg-linear-to-br from-blue-50 to-indigo-100'>
-        <div className='bg-white rounded-lg shadow-lg p-6'>
+        <div className='p-6'>
           <div className='text-xl text-red-600 font-semibold'>{error}</div>
           <button
             onClick={() => window.location.reload()}
-            className='mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'
+            className='mt-4 w-32 h-12 text-2xl px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'
           >
             Retry
           </button>

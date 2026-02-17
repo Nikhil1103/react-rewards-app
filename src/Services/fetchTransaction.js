@@ -13,6 +13,6 @@ export const fetchTransactions = () => {
             } catch (error) {
                 reject(new Error(MESSAGES.API_ERROR));
             }
-        }, 1000); // Simulate a delay of 1 second
+        }, 1000);
     });
 };       

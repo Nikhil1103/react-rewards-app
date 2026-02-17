@@ -5,7 +5,7 @@ import CustomerRewards from './CustomerRewards';
 
 // Button Tailwind styles
 const BUTTON_STYLES = {
-    primaryButton: 'px-3 py-2 rounded-lg border border-blue-600 bg-white text-blue-600 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition',
+    primaryButton: 'px-4 py-3 rounded-lg border border-blue-600 bg-white text-blue-600 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition',
     pageButtonActive: 'w-10 h-10 rounded-lg font-semibold transition bg-blue-600 text-white',
     pageButtonInactive: 'w-10 h-10 rounded-lg font-semibold transition border border-gray-300 bg-white hover:bg-gray-100',
 };
@@ -16,7 +16,7 @@ const page = 1;
 const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData = {} }) {
     const [currentPage, setCurrentPage] = useState(page);
 
-    const { customersPerPage } = PAGINATION_CONFIG;
+    const { CUSTOMERSPERPAGE } = PAGINATION_CONFIG;
 
     // Memoize processed data
     const processedData = useMemo(() => {
@@ -30,10 +30,10 @@ const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData 
         }
 
         const customers = Object.values(rewardsData);
-        const totalPages = Math.ceil(customers.length / customersPerPage);
+        const totalPages = Math.ceil(customers.length / CUSTOMERSPERPAGE);
 
-        const startIndex = (currentPage - 1) * customersPerPage;
-        const endIndex = startIndex + customersPerPage;
+        const startIndex = (currentPage - 1) * CUSTOMERSPERPAGE;
+        const endIndex = startIndex + CUSTOMERSPERPAGE;
         const currentCustomers = customers.slice(startIndex, endIndex);
 
         return {
@@ -42,8 +42,7 @@ const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData 
             currentCustomers,
             totalCustomers: customers.length,
         };
-    }, [rewardsData, currentPage, customersPerPage]);
-    console.log('Processed Data:', processedData);
+    }, [rewardsData, currentPage, CUSTOMERSPERPAGE]);
 
     // Memoize page numbers array
     const pageNumbers = useMemo(() => {

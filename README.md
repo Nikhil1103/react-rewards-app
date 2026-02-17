@@ -271,7 +271,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 > **Note**: Add your actual screenshots in these sections to showcase the live application
 
 ### 1. Main Dashboard - Customer Rewards Display
-![Application Dashboard]()  
+src\assets\Dashboard_Screenshot.png
 
 
 *Placeholder for main dashboard screenshot*
@@ -289,8 +289,8 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 - Interactive transaction table showing date, amount, and earned points
 
 ### 2. Transaction Table with Decimal Amounts
-![Transaction Details]()  
-*Placeholder for transaction table screenshot*
+
+src\assets\TransactionDetail_Screenshot.png
 
 **Displays:**
 - Date of transaction (YYYY-MM-DD format)
@@ -300,7 +300,8 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 - Responsive table layout
 
 ### 3. Pagination Controls
-![Pagination Navigation]()  
+src\assets\Pagination-Screenshot.png
+
 *Placeholder for pagination screenshot*
 
 **Navigation Features:**
@@ -317,7 +318,9 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 - Page 4: Customers C019-C020
 
 ### 4. Error Handling & Validation
-![Error State]()  
+
+src\assets\Error_Screenshot.png
+
 *Placeholder for error handling screenshot*
 
 **User Feedback:**
@@ -338,7 +341,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 
 ---
 
-## ✅ Unit Test Success
+##  Unit Test Success
 
 ### Test File: `src/utils/pointsCalculator.test.js`
 
@@ -403,6 +406,9 @@ npm test -- pointsCalculator.test.js
 ---
 
 ## 📊 Application Screenshots
+src\assets\testcases-success_screenshot.png
+
+src\assets\test-coverage_screenshot.png
 
 ## 🔧 Configuration
 
