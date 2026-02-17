@@ -1,18 +1,26 @@
 import { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { DATE_FORMAT } from '../constants';
 
 const MonthCard = memo(function MonthCard({ month, monthData }) {
     // Memoize date string to avoid recreation
+    // const monthDisplay = useMemo(() => {
+    //     return new Date(month + '-01').toLocaleDateString(
+    //         DATE_FORMAT.LOCALE,
+    //         DATE_FORMAT.OPTIONS
+    //     );
+    // }, [month]);
     const monthDisplay = useMemo(() => {
         try {
-            return new Date(month + '-01').toLocaleDateString('en-US', {
-                month: 'long',
-                year: 'numeric',
-            });
-        } catch (e) {
-            return month;
+            return new Date(month + '-01').toLocaleDateString(
+                DATE_FORMAT.LOCALE,
+                DATE_FORMAT.OPTIONS
+            );
+        } catch {
+            return month; // fallback to raw key
         }
     }, [month]);
+
 
     return (
         <div className='bg-blue-50 rounded-lg p-4 border border-blue-200'>
@@ -32,11 +40,11 @@ const MonthCard = memo(function MonthCard({ month, monthData }) {
 MonthCard.propTypes = {
     month: PropTypes.string.isRequired,
     monthData: PropTypes.shape({
-        month: PropTypes.string.isRequired,
+        // month: PropTypes.string.isRequired,
         points: PropTypes.number.isRequired,
         transactions: PropTypes.arrayOf(
             PropTypes.shape({
-                id: PropTypes.number.isRequired,
+                transactionId: PropTypes.string.isRequired,
                 customerId: PropTypes.string.isRequired,
                 customerName: PropTypes.string.isRequired,
                 amount: PropTypes.number.isRequired,

@@ -25,7 +25,7 @@ export const CUSTOMERS = [
 // Pagination config
 export const PAGINATION_CONFIG = {
     PAGE_SIZE: 6,
-    customersPerPage: 6,
+    CUSTOMERS_PER_PAGE: 6,
 };
 
 // App messages
@@ -45,10 +45,10 @@ export const POINTS_RULES = {
 };
 
 // Date format
-export const DATE_FORMAT = {
+export const DATE_FORMAT = Object.freeze({
     LOCALE: 'en-US',
-    OPTIONS: {
+    OPTIONS: Object.freeze({
         month: 'long',
         year: 'numeric',
-    },
-};
+    }),
+});

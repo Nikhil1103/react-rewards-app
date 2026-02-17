@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 import { PAGINATION_CONFIG } from '../constants';
 import CustomerRewards from './CustomerRewards';
 
+// Button Tailwind styles
+const BUTTON_STYLES = {
+    primaryButton: 'px-3 py-2 rounded-lg border border-blue-600 bg-white text-blue-600 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition',
+    pageButtonActive: 'w-10 h-10 rounded-lg font-semibold transition bg-blue-600 text-white',
+    pageButtonInactive: 'w-10 h-10 rounded-lg font-semibold transition border border-gray-300 bg-white hover:bg-gray-100',
+};
+
+// Default page number
+const page = 1;
+
 const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData = {} }) {
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(page);
 
     const { customersPerPage } = PAGINATION_CONFIG;
 
@@ -33,6 +43,7 @@ const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData 
             totalCustomers: customers.length,
         };
     }, [rewardsData, currentPage, customersPerPage]);
+    console.log('Processed Data:', processedData);
 
     // Memoize page numbers array
     const pageNumbers = useMemo(() => {
@@ -85,7 +96,7 @@ const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData 
                     <button
                         onClick={handlePrevPage}
                         disabled={currentPage === 1}
-                        className='px-3 py-2 rounded-lg border border-blue-600 bg-white text-blue-600 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition'
+                        className={BUTTON_STYLES.primaryButton}
                     >
                         ← Previous
                     </button>
@@ -95,10 +106,10 @@ const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData 
                             <button
                                 key={page}
                                 onClick={() => handlePageChange(page)}
-                                className={`w-10 h-10 rounded-lg font-semibold transition ${currentPage === page
-                                    ? 'bg-blue-600 text-white'
-                                    : 'border border-gray-300 bg-white hover:bg-gray-100'
-                                    }`}
+                                className={currentPage === page
+                                    ? BUTTON_STYLES.pageButtonActive
+                                    : BUTTON_STYLES.pageButtonInactive
+                                }
                             >
                                 {page}
                             </button>
@@ -108,7 +119,7 @@ const PaginatedCustomerList = memo(function PaginatedCustomerList({ rewardsData 
                     <button
                         onClick={handleNextPage}
                         disabled={currentPage === processedData.totalPages}
-                        className='px-3 py-2 rounded-lg border border-blue-600 bg-white text-blue-600 hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition'
+                        className={BUTTON_STYLES.primaryButton}
                     >
                         Next →
                     </button>

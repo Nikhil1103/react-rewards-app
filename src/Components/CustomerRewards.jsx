@@ -46,11 +46,11 @@ CustomerRewards.propTypes = {
     customerName: PropTypes.string.isRequired,
     months: PropTypes.objectOf(
       PropTypes.shape({
-        month: PropTypes.string.isRequired,
+        // month: PropTypes.string.isRequired,
         points: PropTypes.number.isRequired,
         transactions: PropTypes.arrayOf(
           PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            transactionId: PropTypes.string.isRequired,
             customerId: PropTypes.string.isRequired,
             customerName: PropTypes.string.isRequired,
             amount: PropTypes.number.isRequired,

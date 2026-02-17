@@ -446,13 +446,33 @@ npm run build
 
 ## 📝 Example Data
 
-The application includes 44 transactions from 20 customers with realistic decimal amounts:
+The application includes 44 transactions from 20 customers with unique transaction IDs and realistic decimal amounts.
+
+### Transaction Data Structure
+
+Each transaction includes:
+- **transactionId**: Unique transaction identifier (TXN-001 to TXN-044) - **Primary Key**
+- **customerId**: Customer code (C001-C020)
+- **customerName**: Full customer name
+- **amount**: Transaction amount with decimals (e.g., $120.50, $75.25)
+- **date**: Transaction date in ISO format (2025-2026)
+
+### Example Transactions
 
 ```javascript
-{ id: 1, customerId: 'C001', customerName: 'John Doe', amount: 120.50, date: '2025-12-15' },
-{ id: 2, customerId: 'C001', customerName: 'John Doe', amount: 75.25, date: '2025-12-20' },
-// ... 42 more transactions
+{ transactionId: 'TXN-001', customerId: 'C001', customerName: 'John Doe', amount: 120.50, date: '2025-12-15' },
+{ transactionId: 'TXN-002', customerId: 'C001', customerName: 'John Doe', amount: 75.25, date: '2025-12-20' },
+{ transactionId: 'TXN-003', customerId: 'C001', customerName: 'John Doe', amount: 150.75, date: '2026-01-10' },
+// ... 41 more transactions
 ```
+
+### Mock Data Features
+- **20 Unique Customers**: C001 to C020
+- **44 Total Transactions**: Multiple transactions per customer
+- **Unique Transaction IDs**: TXN-001 format for easy tracking and reference
+- **Decimal Amounts**: Realistic prices ($95.30, $180.45, etc.)
+- **Date Range**: November 2025 - February 2026
+- **Primary Key**: `transactionId` (String) - uniquely identifies each transaction
 
 ---
 

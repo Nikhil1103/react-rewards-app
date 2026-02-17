@@ -28,6 +28,7 @@ export default function App() {
 
     loadData();
   }, []);
+  console.log('Rewards Data:', rewardsData);
 
   if (loading) {
     return (
@@ -70,7 +71,7 @@ export default function App() {
     <div className='min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 p-8'>
       <div className='max-w-7xl mx-auto'>
         <div className='mb-8'>
-          <h1 className='text-4xl font-bold text-gray-800 mb-2'>🎁 Rewards Program</h1>
+          <h1 className='text-4xl font-bold text-gray-800 mb-2'> Rewards Program</h1>
           <p className='text-gray-600 text-lg'>Customer Points Summary - 3 Month Period</p>
         </div>
 

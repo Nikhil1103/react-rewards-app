@@ -104,11 +104,10 @@ describe('calculatePoints', () => {
 describe('groupByCustomerAndMonth', () => {
     it('should group transactions by customer and month', () => {
         const transactions = [
-            { id: 1, customerId: 'C001', customerName: 'John Doe', amount: 120, date: '2025-12-15' },
-            { id: 2, customerId: 'C001', customerName: 'John Doe', amount: 75, date: '2025-12-20' },
-            { id: 3, customerId: 'C002', customerName: 'Jane Smith', amount: 150.50, date: '2025-12-05' },
+            { transactionId: 'TXN-001', customerId: 'C001', customerName: 'John Doe', amount: 120, date: '2025-12-15' },
+            { transactionId: 'TXN-002', customerId: 'C001', customerName: 'John Doe', amount: 75, date: '2025-12-20' },
+            { transactionId: 'TXN-003', customerId: 'C002', customerName: 'Jane Smith', amount: 150.50, date: '2025-12-05' },
         ];
-
         const grouped = groupByCustomerAndMonth(transactions);
 
         expect(Object.keys(grouped).length).toBe(2);
@@ -120,10 +119,9 @@ describe('groupByCustomerAndMonth', () => {
 
     it('should calculate total points correctly for a customer', () => {
         const transactions = [
-            { id: 1, customerId: 'C001', customerName: 'John Doe', amount: 120.75, date: '2025-12-15' },
-            { id: 2, customerId: 'C001', customerName: 'John Doe', amount: 85.25, date: '2026-01-10' },
+            { transactionId: 'TXN-001', customerId: 'C001', customerName: 'John Doe', amount: 120.75, date: '2025-12-15' },
+            { transactionId: 'TXN-002', customerId: 'C001', customerName: 'John Doe', amount: 85.25, date: '2026-01-10' },
         ];
-
         const grouped = groupByCustomerAndMonth(transactions);
         const totalPoints = grouped['C001'].total;
 
@@ -135,10 +133,9 @@ describe('groupByCustomerAndMonth', () => {
 
     it('should organize transactions by month', () => {
         const transactions = [
-            { id: 1, customerId: 'C001', customerName: 'John Doe', amount: 120, date: '2025-12-15' },
-            { id: 2, customerId: 'C001', customerName: 'John Doe', amount: 85.50, date: '2026-01-10' },
+            { transactionId: 'TXN-001', customerId: 'C001', customerName: 'John Doe', amount: 120, date: '2025-12-15' },
+            { transactionId: 'TXN-002', customerId: 'C001', customerName: 'John Doe', amount: 85.50, date: '2026-01-10' },
         ];
-
         const grouped = groupByCustomerAndMonth(transactions);
         const months = Object.keys(grouped['C001'].months);
 

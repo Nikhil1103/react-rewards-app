@@ -16,10 +16,6 @@ export const calculatePoints = (amount) => {
 
     let points = 0;
 
-    // Business rules (as covered by unit tests):
-    // - 0 points for amounts below $50
-    // - For amounts between $50 and $100 (inclusive), points = amount (legacy behavior in tests)
-    // - For amounts over $100, points = 2 * (amount - 100)
     if (amount < 50) {
         points = 0;
     } else if (amount >= 50 && amount <= 100) {
