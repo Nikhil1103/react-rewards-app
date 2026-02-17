@@ -271,7 +271,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 > **Note**: Add your actual screenshots in these sections to showcase the live application
 
 # 1. Main Dashboard - Customer Rewards Display
-![Dashboard](C:\React Project\react-rewards-app\src\assets\Dashboard_Screenshot.png)
+![Dashboard](src\assets\Dashboard_Screenshot.png)
 
 
 *Placeholder for main dashboard screenshot*
