@@ -290,7 +290,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 
 # 2. Transaction Table with Decimal Amounts
 
-![Transaction Table](src\assets\TransactionDetail_Screenshot.png)
+![Transaction Table](src/assets/TransactionDetail_Screenshot.png)
 
 **Displays:**
 - Date of transaction (YYYY-MM-DD format)
@@ -300,7 +300,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 - Responsive table layout
 
 # 3. Pagination Controls
-![pagination](src\assets\Pagination-Screenshot.png)
+![pagination](src/assets/Pagination-Screenshot.png)
  
 *Placeholder for pagination screenshot*
 
@@ -318,7 +318,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 - Page 4: Customers C019-C020
 
 # 4. Error Handling & Validation
-![Error State](src\assets\Error_Screenshot.png)  
+![Error State](src/assets/Error_Screenshot.png)  
 *Placeholder for error handling screenshot*
 
 **User Feedback:**
@@ -328,7 +328,7 @@ if (typeof amount !== 'number' || isNaN(amount)) {
 - Proper error state management
 
 # 5. Loading State
-![Loading Indicator](src\assets\Loading_Screenshot.png)  
+![Loading Indicator](src/assets/Loading_Screenshot.png)  
 *Placeholder for loading state screenshot*
 
 **Visual Feedback:**
@@ -404,9 +404,9 @@ npm test -- pointsCalculator.test.js
 ---
 
 # Application 
-![Test-Success](src\assets\testcases-success_screenshot.png)
+![Test-Success](src/assets/testcases-success_screenshot.png)
 
-![test-coverge](src\assets\test-coverage_screenshot.png)
+![test-coverge](src/assets/test-coverage_screenshot.png)
 
 # Configuration
 
